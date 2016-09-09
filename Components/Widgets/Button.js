@@ -144,7 +144,7 @@ export default class Button extends NativeBaseComponent {
         return iconComponentPresent;
     }
     renderChildren() {
-        
+
         if(typeof this.props.children == 'string') {
             return <Text style={this.getTextStyle()}>{(Platform.OS==='ios' || !this.props.capitalize) ? this.props.children : this.props.children.toUpperCase()}</Text>
         }
@@ -164,6 +164,10 @@ export default class Button extends NativeBaseComponent {
                     return true;
                 }
             });
+
+            if (!childrenArray.length) {
+              return false;
+            }
 
             if(this.props.iconRight) {
                 if (childrenArray[0].type==undefined) {
